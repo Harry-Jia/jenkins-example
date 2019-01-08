@@ -9,7 +9,10 @@ pipeline {
         
         stage('Preparing') {
           steps {
-            sh "echo ${params.StringDemo}"
+              node ('smuVM001'){
+                sh "echo ${params.StringDemo}"
+                sh 'echo $HOSTNAME'
+              }
           }
         }
         
