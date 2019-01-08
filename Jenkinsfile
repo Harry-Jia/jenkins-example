@@ -1,7 +1,18 @@
 pipeline {
     agent any
+    
+    parameters {
+        string(defaultValue: 'Text testing', description: '', name: 'StringDemo')
+    }
 
     stages {
+        
+        stage('Preparing') {
+          steps {
+            sh "echo ${params.StringDemo}"
+          }
+        }
+        
         stage ('Compile Stage') {
 
             steps {
