@@ -10,8 +10,18 @@ pipeline {
         stage('Preparing') {
           steps {
               node ('smuVM001'){
-                sh "echo ${params.StringDemo}"
+                sh "echo ${params.zoweBuild}"
                 sh 'echo $HOSTNAME'
+              }
+          }
+        }
+        
+        stage('Downloading build') {
+          steps {
+              node ('master'){
+                sh 'echo $HOSTNAME'
+                sh "echo ${params.zoweBuild}"
+                sh "echo ${params.buildDate}"
               }
           }
         }
