@@ -22,7 +22,9 @@ pipeline {
                 sh 'echo $HOSTNAME'
                 sh "echo ${params.zoweBuild}"
                 sh "echo ${params.buildDate}"
+                sh 'pwd'
                 sh "/root/download_pax_build.sh ${params.zoweBuild} ${params.buildDate}"
+                sh 'ls -l'
               }
           }
         }
