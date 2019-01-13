@@ -16,6 +16,20 @@ pipeline {
           }
         }
         
+        stage('install build') {
+          steps {
+              node ('sp14.svl.ibm.com'){
+                sh 'echo $HOSTNAME'
+                sh "echo ${params.zoweBuild}"
+                sh "echo ${params.buildDate}"
+                sh 'pwd'
+                sh "./zowe-0.9.4/install/zowe-pre-install.sh"
+                sh 'ls -l'
+                sh 'env'
+              }
+          }
+        }
+        
         stage('Downloading build') {
           steps {
               node ('master'){
@@ -29,19 +43,7 @@ pipeline {
           }
         }
         
-        stage('install build') {
-          steps {
-              node ('sp14.svl.ibm.com'){
-                sh 'echo $HOSTNAME'
-                sh "echo ${params.zoweBuild}"
-                sh "echo ${params.buildDate}"
-                sh 'pwd'
-                sh ".zowe-0.9.4/install/zowe-pre-install.sh"
-                sh 'ls -l'
-                sh 'env'
-              }
-          }
-        }
+        
         stage ('Compile Stage') {
 
             steps {
