@@ -19,10 +19,9 @@ pipeline {
         stage('install build') {
           steps {
               node ('sp14.svl.ibm.com'){
-                sh 'echo $HOSTNAME'
+                sh 'pwd'
                 sh "echo ${params.zoweBuild}"
                 sh "echo ${params.buildDate}"
-                sh 'pwd'
                 sh "./zowe-0.9.4/install/zowe-pre-install.sh"
                 sh 'ls -l'
                 sh 'env'
