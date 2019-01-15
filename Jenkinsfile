@@ -12,6 +12,8 @@ pipeline {
               node ('smuVM001'){
                 sh "echo ${params.zoweBuild}"
                 sh 'echo $HOSTNAME'
+                sh 'ls -l'
+                sh 'pwd'
               }
           }
         }
