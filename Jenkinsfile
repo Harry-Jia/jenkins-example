@@ -19,12 +19,12 @@ pipeline {
         stage('install build') {
           steps {
               node ('winmvs3b.hursley.ibm.com'){
-                sh 'pwd'
+                sh 'env'
                 sh "echo ${params.zoweBuild}"
                 sh "echo ${params.buildDate}"
                 sh "../build/zowe-0.9.5/install/zowe-pre-install.sh"
                 sh 'ls -l'
-                sh 'env'
+                sh 'pwd'
               }
           }
         }
