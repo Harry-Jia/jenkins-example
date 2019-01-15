@@ -22,7 +22,7 @@ pipeline {
                 sh 'pwd'
                 sh "echo ${params.zoweBuild}"
                 sh "echo ${params.buildDate}"
-                sh "./zowe-0.9.5/install/zowe-pre-install.sh"
+                sh "../build/zowe-0.9.5/install/zowe-pre-install.sh"
                 sh 'ls -l'
                 sh 'env'
               }
