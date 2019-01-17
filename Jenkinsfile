@@ -19,6 +19,19 @@ pipeline {
           }
         }
         
+        stage('Preparing zLinux') {
+          steps {
+              node ('tvt1032.svl.ibm.com'){
+                sh "echo ${params.zoweBuild}"
+                sh 'echo $HOSTNAME'
+                sh 'env'
+                sh 'ls -l'
+                sh 'pwd'
+              }
+          }
+        }
+        
+        
         stage('install build') {
           steps {
               node ('winmvs3b.hursley.ibm.com'){
