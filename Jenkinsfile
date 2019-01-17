@@ -27,7 +27,8 @@ pipeline {
                 sh 'env'
                 sh 'ls -l'
                 sh 'pwd'
-              }
+                sh '/tmp/jcl/daily_build/dailyBuild.sh
+            }
           }
         }
         
