@@ -19,6 +19,30 @@ pipeline {
           }
         }
         
+         stage('Downloading SMU build') {
+          steps {
+              node ('master'){
+                sh 'echo $HOSTNAME'
+                sh "echo ${params.zoweBuild}"
+                sh "echo ${params.buildDate}"
+                sh 'pwd'
+                sh "/root/download_smu_dailybuild.sh"
+                sh 'ls -l'
+              }
+          }
+        }
+        
+        stage('Uploading SMU build') {
+          steps {
+              node ('master'){
+                sh 'echo $HOSTNAME'
+                sh 'pwd'
+                sh "/root/upload_smu_dailybuild_tvt2013.sh"
+                sh 'ls -l'
+              }
+          }
+        }
+        
         stage('Preparing zLinux') {
           steps {
               node ('tvt1032.svl.ibm.com'){
@@ -27,7 +51,7 @@ pipeline {
                 sh 'env'
                 sh 'ls -l'
                 sh 'pwd'
-                sh '/tmp/jcl/daily_build/dailyBuild.sh
+                sh '/tmp/jcl/daily_build/dailyBuild.sh uninstall
             }
           }
         }
@@ -42,7 +66,7 @@ pipeline {
           }
         }
         
-        stage('Downloading build') {
+        stage('Downloading pax build') {
           steps {
               node ('master'){
                 sh 'echo $HOSTNAME'
